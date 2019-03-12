@@ -1,3 +1,7 @@
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 body {
     margin: 0;
     padding: 0;
@@ -70,10 +74,10 @@ body {
 }
 
 .item-deadline {
-    font-weight: 300;
+    font-weight: 400;
     font-size: 12px;
     line-height: 1em;
-    color: #212121;
+    color: #666;
     margin-bottom: 8px;
 }
 
@@ -85,8 +89,9 @@ body {
 }
 
 .item-place {
-    font-weight: 300;
+    font-weight: 400;
     font-size: 16px;
     line-height: 18px;
     margin-bottom: 0;
+    color: #666;
 }

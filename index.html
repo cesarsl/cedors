@@ -10,6 +10,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
+        Handlebars.registerHelper('toLowerCase', function(str) {
+            return str.toLowerCase();
+        });
+
         function sortResults(arr, prop, asc) {
             arr = arr.sort(function(a, b) { 
                 if (asc) {
@@ -36,7 +40,9 @@
         {{#each this}}
             <div class="item-wrapper">
                 <a href="{{url}}" target="_blank">
-                    <div class="image-highlight">Imagem</div>
+                    <div class="image-highlight">
+                        <img src="img/{{toLowerCase tipo}}.png" />
+                    </div>
                     <div class="item-content">
                         <div class="item-deadline">Inscrições até {{dataLimite}}</div>
                         <div class="item-title">{{titulo}}</div>
