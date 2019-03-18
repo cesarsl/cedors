@@ -42,6 +42,13 @@ function filterDate(arr) {
     return returnArr;
 }
 
+function filterArray(arr, field, term) {
+    var returnArr = arr.filter(function(el) {
+        return el[field] === term;
+    });
+    return returnArr;
+}
+
 Handlebars.registerHelper('toLowerCase', function(str) {
     return str.toLowerCase();
 });
