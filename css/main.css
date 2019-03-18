@@ -2,6 +2,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -10,14 +11,51 @@ body {
 }
 
 #navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     position: fixed;
     top: 0;
     margin: 0;
     width: 100%;
-    padding: 28px 24px 20px 24px;
+    /* padding: 28px 24px 20px 24px; */
     background-color: #333;
     box-shadow: 0 0 6px 0 #333;
     z-index: 1000;
+}
+
+.logo-wrapper {
+    padding: 26px 24px 18px 24px;
+    text-align: left;
+}
+
+.navigation-menu-wrapper {
+    margin: 0;
+    border: 0;
+    padding: 30px 24px;
+    list-style-type: none;
+    text-align: right;
+}
+
+.navigation-menu-item {
+    display: inline-block;
+    margin-right: 24px;
+}
+
+.navigation-menu-item:last-child {
+    margin-right: 0;
+}
+
+.navigation-menu-link {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.75px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.navigation-menu-link:hover {
+    color: #f05c5e;
 }
 
 #content {
