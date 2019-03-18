@@ -30,7 +30,7 @@ function sortResults(arr, prop, asc) {
     return arr;
 }
 
-function filterArray(arr) {
+function filterDate(arr) {
     var today = new Date().getTime();
     var returnArr = arr.filter(function (el) {
         var splitDate = el.dataLimite.split('/');
@@ -50,7 +50,7 @@ $(document).ready(function() {
     $.getJSON('https://api.sheety.co/9dc03903-6ddb-4116-9ccd-6978675aac5b', function(data) {
         var template = Handlebars.compile($('#item-template').html());
         var sorted = sortDates(data, 'dataLimite', true);
-        var filtered = filterArray(sorted);
+        var filtered = filterDate(sorted);
         $('#content').html(template(filtered));
     })
 })
