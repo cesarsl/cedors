@@ -34,12 +34,18 @@ function filterDate(arr) {
     var today = new Date();
     today.setHours(0,0,0,0);
     var returnArr = arr.filter(function (el) {
-        const [day, month, year] = el.dataLimite.split('/');
-        var tempDate = new Date(year, month - 1, day);
 
-        if (tempDate.getTime() >= today.getTime()) {
+        if (el.dataLimite === null) {
             return el;
+        } else {
+            const [day, month, year] = el.dataLimite.split('/');
+            var tempDate = new Date(year, month - 1, day);
+
+            if (tempDate.getTime() >= today.getTime()) {
+                return el;
+            }
         }
+        
     });
     return returnArr;
 }
@@ -52,24 +58,19 @@ function filterArray(arr, field, term) {
 }
 
 Handlebars.registerHelper('toLowerCase', function(str) {
-    return str.toLowerCase();
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/\s/g,'-').toLowerCase();
 });
 
 Handlebars.registerHelper('highlightDate', function(str) {
     var tempDate = new Date();
 
-    if (str == tempDate.toLocaleDateString('pt-BR')) {
-        return '<span class="highlight-date">Inscrições até hoje</span>';
-    } else {
-        return 'Inscrições até ' + str;
+    if (str === null) {
+        return 'Sem data limite'
+    } else  {
+        if (str == tempDate.toLocaleDateString('pt-BR')) {
+            return '<span class="highlight-date">Inscrições até hoje</span>';
+        } else {
+            return 'Inscrições até ' + str;
+        }
     }
 });
-
-$(document).ready(function() {
-    $.getJSON('https://api.sheety.co/9dc03903-6ddb-4116-9ccd-6978675aac5b', function(data) {
-        var template = Handlebars.compile($('#item-template').html());
-        var sorted = sortDates(data, 'dataLimite', true);
-        var filtered = filterDate(sorted);
-        $('#content').html(template(filtered));
-    })
-})
