@@ -123,8 +123,14 @@ body {
     margin-bottom: 8px;
 }
 
+.highlight-date {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #f05c5e;
+}
+
 .item-title {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 18px;
     line-height: 20px;
     margin-bottom: 8px;

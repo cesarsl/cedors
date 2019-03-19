@@ -31,11 +31,13 @@ function sortResults(arr, prop, asc) {
 }
 
 function filterDate(arr) {
-    var today = new Date().getTime();
+    var today = new Date();
+    today.setHours(0,0,0,0);
     var returnArr = arr.filter(function (el) {
-        var splitDate = el.dataLimite.split('/');
-        var compDate = new Date(splitDate[2], splitDate[1] - 1, splitDate[0]).getTime();
-        if (compDate >= today) {
+        const [day, month, year] = el.dataLimite.split('/');
+        var tempDate = new Date(year, month - 1, day);
+
+        if (tempDate.getTime() >= today.getTime()) {
             return el;
         }
     });
@@ -51,6 +53,16 @@ function filterArray(arr, field, term) {
 
 Handlebars.registerHelper('toLowerCase', function(str) {
     return str.toLowerCase();
+});
+
+Handlebars.registerHelper('highlightDate', function(str) {
+    var tempDate = new Date();
+
+    if (str == tempDate.toLocaleDateString('pt-BR')) {
+        return '<span class="highlight-date">Inscrições até hoje</span>';
+    } else {
+        return 'Inscrições até ' + str;
+    }
 });
 
 $(document).ready(function() {
