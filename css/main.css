@@ -17,10 +17,10 @@ body {
     top: 0;
     margin: 0;
     width: 100%;
-    /* padding: 28px 24px 20px 24px; */
+    height: 90px;
     background-color: #333;
     box-shadow: 0 0 6px 0 #333;
-    z-index: 1000;
+    z-index: 3;
 }
 
 .logo-wrapper {
@@ -28,30 +28,124 @@ body {
     text-align: left;
 }
 
+.menuToggle {
+    display: block;
+    position: relative;
+    top: 32px;
+    right: 24px;
+    margin: 0 0 0 auto;
+    width: 40px;
+    
+    -webkit-user-select: none;
+    user-select: none;
+
+    z-index: 5;
+}
+
+.menuToggle input {
+    display: block;
+    width: 40px;
+    height: 32px;
+
+    position: absolute;
+    top: -7px;
+    left: -5px;
+
+    cursor: pointer;
+
+    opacity: 0;
+    z-index: 6;
+}
+
+.menuToggle span {
+    display: block;
+    position: relative;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    width: 33px;
+    height: 4px;
+    background-color: #fff;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+    z-index: 5;
+}
+
+.menuToggle span:first-of-type {
+    transform-origin: 0% 0%;
+}
+
+.menuToggle span:nth-last-of-type(1) {
+    transform-origin: 0% 100%;
+}
+
+.menuToggle input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(6px, -6px);
+}
+
+.menuToggle input:checked ~ span:nth-last-of-type(2) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2,0.2);
+}
+
+.menuToggle input:checked ~ span:nth-last-of-type(1) {
+    transform: rotate(-45deg) translate(3px,8px);
+}
+
 .navigation-menu-wrapper {
+    position: absolute;
+    top: -32px;
+    right: 0;
+    box-sizing: border-box;
+    
+    width: 300px;
+    height: 100vh;
     margin: 0;
     border: 0;
-    padding: 30px 24px;
+    padding: 90px 24px 24px 24px;
+
     list-style-type: none;
     text-align: right;
+
+    background-color: #333;
+    z-index: 4;
+
+    transform: translate(340px, 0);
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+.menuToggle input:checked ~ ul.navigation-menu-wrapper {
+    transform: translate(24px,0);
+}
+
+.menu-label {
+    display: block;
+    position: absolute;
+    right: 56px;
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    z-index: 5;
 }
 
 .navigation-menu-item {
-    display: inline-block;
-    margin-right: 24px;
-}
-
-.navigation-menu-item:last-child {
-    margin-right: 0;
+    display: block;
+    margin-bottom: 8px;
 }
 
 .navigation-menu-link {
     color: #fff;
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 900;
     letter-spacing: -0.75px;
     text-transform: uppercase;
     text-decoration: none;
+}
+
+.navigation-menu-link-secondary {
+    font-weight: 400;
+    text-transform: none;
 }
 
 .navigation-menu-link:hover {
@@ -64,7 +158,7 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 24px;
     grid-row-gap: 24px;
-    max-width: 960px;
+    max-width: 936px;
 }
 
 #site-info {
@@ -80,9 +174,9 @@ body {
 
 .item-wrapper {
     position: relative;
-    max-width: 304px;
-    min-width: 304px;
-    min-height: 304px;
+    max-width: 296px;
+    min-width: 296px;
+    min-height: 296px;
     background-color: #fff;
     box-shadow: 0 0 6px 0 rgba(0,0,0,0.22);
 }
@@ -95,7 +189,7 @@ body {
     position: relative;
     display: block;
     width: 100%;
-    min-height: 304px;
+    min-height: 296px;
     text-decoration: none;
     color: #212121;
 }
@@ -105,14 +199,20 @@ body {
 }
 
 .image-highlight {
+    display: block;
     margin: 0;
     padding: 0;
     border-radius: 2px 2px 0 0;
-    min-width: 304px;
-    min-height: 172px;
+    min-width: 296px;
+    max-height: 167.47px;
     background-color: #f2f2f2;
     text-align: center;
     vertical-align: middle;
+}
+
+.image-highlight img {
+    width: 100%;
+    height: 100%;
 }
 
 .item-deadline {
@@ -147,13 +247,24 @@ body {
 @media only screen and (max-width: 1023px) {
     #content {
         grid-template-columns: repeat(2, 1fr);
-        max-width: 623px;
+        max-width: 616px;
     }
 }
 
 @media only screen and (max-width: 699px) {
     #content {
         grid-template-columns: 1fr;
-        max-width: 328px;
+        max-width: 296px;
+    }
+    
+    .item-wrapper {
+        position: relative;
+        max-width: 296px;
+        min-width: 296px;
+        min-height: 296px;
+    }
+
+    .menu-label {
+        transform: scale(0,0);
     }
 }
