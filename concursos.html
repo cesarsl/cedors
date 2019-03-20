@@ -13,58 +13,41 @@
     <script src="js/main.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+            
+            // Load Menu
+            $.getJSON('json/menu.json', function(data) {
+                $.get('templates/site-menu.htm', function(templates) {
+                    var rendered = Handlebars.compile($(templates).html());
+                    $('#navigation').html(rendered(data));
+                });
+            });
+            
+            // Load Content
             $.getJSON('https://api.sheety.co/9dc03903-6ddb-4116-9ccd-6978675aac5b', function(data) {
-                var template = Handlebars.compile($('#item-template').html());
-                var sorted = sortDates(data, 'dataLimite', true);
-                var filteredDate = filterDate(sorted);
-                var filteredType = filterArray(filteredDate, 'tipo', 'Concursos');
-                $('#content').html(template(filteredType));
-            })
-        })
-    </script>
-    <script id="item-template" type="text/x-handlebars-template">
-        {{#each this}}
-            <div class="item-wrapper">
-                <a href="{{url}}" target="_blank">
-                    <div class="image-highlight">
-                        <img src="img/{{toLowerCase tipo}}.png" />
-                    </div>
-                    <div class="item-content">
-                        <div class="item-deadline">{{{highlightDate dataLimite}}}</div>
-                        <div class="item-title">{{titulo}}</div>
-                        <div class="item-place">{{local}}</div>
-                    </div>
-                </a>
-            </div>
-        {{/each}}
+                $.get('templates/item-template.htm', function(templates) { 
+                    var template = Handlebars.compile($(templates).html());
+                    var sorted = sortDates(data, 'dataLimite', true);
+                    var filteredDate = filterDate(sorted);
+                    var filteredType = filterArray(filteredDate, 'tipo', 'Concursos');
+                    $('#content').html(template(filteredType));
+                });
+            });
+        });
     </script>
 </head>
 <body>
     <header id="navigation">
-        <div class="logo-wrapper"><a href="/"><img src="img/logo.png" /></a></div>
-        <div class="menuToggle">
-            <div class="menu-label">Menu</div>
-            <input type="checkbox" />
-            <span></span>
-            <span></span>
-            <span></span>
-            <ul class="navigation-menu-wrapper">
-                <li class="navigation-menu-item"><a href="/concursos.html" class="navigation-menu-link">Concursos</a></li>
-                <li class="navigation-menu-item"><a href="/cursos.html" class="navigation-menu-link">Cursos</a></li>
-                <li class="navigation-menu-item"><a href="/estudos.html" class="navigation-menu-link">Estudos</a></li>
-                <li class="navigation-menu-item"><a href="/ensino-basico.html" class="navigation-menu-link navigation-menu-link-secondary">Ensino Básico</a></li>
-                <li class="navigation-menu-item"><a href="/ensino-tecnico.html" class="navigation-menu-link navigation-menu-link-secondary">Ensino Técnico</a></li>
-                <li class="navigation-menu-item"><a href="/ensino-superior.html" class="navigation-menu-link navigation-menu-link-secondary">Ensino Superior</a></li>
-                <li class="navigation-menu-item"><a href="/pos-graduacao.html" class="navigation-menu-link navigation-menu-link-secondary">Pós-Graduação</a></li>
-                <li class="navigation-menu-item"><a href="/dicas.html" class="navigation-menu-link">Dicas</a></li>
-                <li class="navigation-menu-item"><a href="/eventos.html" class="navigation-menu-link">Eventos</a></li>
-                <li class="navigation-menu-item"><a href="/idiomas.html" class="navigation-menu-link">Idiomas</a></li>
-                <li class="navigation-menu-item"><a href="/oportunidades.html" class="navigation-menu-link">Oportunidades</a></li>
-            </ul>
-        </div>
+        <!-- Site Menu Template -->
     </header>
     <main id="content">
-        Carregando o conteúdo...
+        <!-- Loading Spinner -->
+        <div class="lds-css ng-scope">
+            <div style="width:100%;height:100%" class="lds-eclipse">
+                <div></div>
+            </div>
+        </div>
+        <div class="loading-label">Carregando o conteúdo...</div>
+        <!-- Content will be loaded over this section -->
     </main>
     <footer id="site-info">
         CEDO RS - 2019

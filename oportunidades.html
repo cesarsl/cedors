@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Estudos - CEDO RS – Informações sobre concursos, estudos, dicas e oportunidades focadas para o público do Rio Grande do Sul</title>
+    <title>Oportunidades - CEDO RS – Informações sobre concursos, estudos, dicas e oportunidades focadas para o público do Rio Grande do Sul</title>
     <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
@@ -28,13 +28,7 @@
                     var template = Handlebars.compile($(templates).html());
                     var sorted = sortDates(data, 'dataLimite', true);
                     var filteredDate = filterDate(sorted);
-                    var filteredType = filterArray(filteredDate, 'tipo', 'Estudos');
-                    var filteredType = filteredType.concat(filterArray(filteredDate, 'tipo', 'Cursos Livres'));
-                    var filteredType = filteredType.concat(filterArray(filteredDate, 'tipo', 'Ensino Básico'));
-                    var filteredType = filteredType.concat(filterArray(filteredDate, 'tipo', 'Ensino Técnico'));
-                    var filteredType = filteredType.concat(filterArray(filteredDate, 'tipo', 'Ensino Superior'));
-                    var filteredType = filteredType.concat(filterArray(filteredDate, 'tipo', 'Pós-Graduação'));
-                    var filteredType = filteredType.concat(filterArray(filteredDate, 'tipo', 'Idiomas'));
+                    var filteredType = filterArray(filteredDate, 'tipo', 'Oportunidades');
                     $('#content').html(template(filteredType));
                 });
             });

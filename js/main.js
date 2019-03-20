@@ -31,20 +31,6 @@ function sortDates(arr, prop, asc) {
             }
             return aDate < bDate ? 1 : -1;
         }
-        
-        // aDate = new Date(a[prop]).getTime()
-        // bDate = new Date(b[prop]).getTime()
-        // if (asc) {
-            // if (a[prop] === null) return 1;
-            // if (aDate > bDate) return 1;
-            // if (aDate < bDate) return -1;
-            // return 0;
-        // } else {
-            // if (b[prop] === null) return -1;
-            // if (bDate > aDate) return 1;
-            // if (bDate < aDate) return -1;
-            // return 0;
-        // }
     });
     return arr;
 }
