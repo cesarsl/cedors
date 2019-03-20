@@ -207,7 +207,6 @@ body {
     max-height: 167.47px;
     background-color: #f2f2f2;
     text-align: center;
-    vertical-align: middle;
 }
 
 .image-highlight img {
@@ -243,6 +242,87 @@ body {
     margin-bottom: 0;
     color: #666;
 }
+
+@keyframes lds-eclipse {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    50% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes lds-eclipse {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    50% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.lds-css {
+    grid-column: 2;
+    margin: 0 auto;
+}
+
+.lds-eclipse {
+    position: relative;
+}
+
+.lds-eclipse div {
+    position: absolute;
+    -webkit-animation: lds-eclipse 1s linear infinite;
+    animation: lds-eclipse 1s linear infinite;
+    width: 80px;
+    height: 80px;
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 0 0 #38ae47;
+    -webkit-transform-origin: 40px 41px;
+    transform-origin: 40px 41px;
+}
+
+.lds-eclipse {
+    width: 100px !important;
+    height: 100px !important;
+    -webkit-transform: translate(-50px, -50px) scale(1) translate(50px, 50px);
+    transform: translate(-50px, -50px) scale(1) translate(50px, 50px);
+}
+
+@keyframes loading-label {
+    0% {
+        color: #333;
+    }
+    50% {
+        color: #999;
+    }
+    100% {
+        color: #333;
+    }
+}
+
+.loading-label {
+    animation: loading-label 2s ease-in-out infinite;
+    grid-column: 2;
+    text-align: center;
+    font-weight: 400;
+    color: #212121;
+}
+  
 
 @media only screen and (max-width: 1023px) {
     #content {

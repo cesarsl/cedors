@@ -23,14 +23,14 @@
             });
             
             // Load Content
-            $.getJSON('https://api.sheety.co/9dc03903-6ddb-4116-9ccd-6978675aac5b', function(data) {
-                $.get('templates/item-template.htm', function(templates) { 
-                    var template = Handlebars.compile($(templates).html());
-                    var sorted = sortDates(data, 'dataLimite', true);
-                    var filtered = filterDate(sorted);
-                    $('#content').html(template(filtered));
-                });
-            });
+            // $.getJSON('https://api.sheety.co/9dc03903-6ddb-4116-9ccd-6978675aac5b', function(data) {
+            //     $.get('templates/item-template.htm', function(templates) { 
+            //         var template = Handlebars.compile($(templates).html());
+            //         var sorted = sortDates(data, 'dataLimite', true);
+            //         var filtered = filterDate(sorted);
+            //         $('#content').html(template(filtered));
+            //     });
+            // });
         });
     </script>
 </head>
@@ -40,7 +40,12 @@
     </header>
     <main id="content">
         <!-- Item Template -->
-        Carregando o conteúdo...
+        <div class="lds-css ng-scope">
+            <div style="width:100%;height:100%" class="lds-eclipse">
+                <div></div>
+            </div>
+        </div>
+        <div class="loading-label">Carregando o conteúdo...</div>
     </main>
     <footer id="site-info">
         CEDO RS - 2019
