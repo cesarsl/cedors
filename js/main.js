@@ -1,16 +1,50 @@
+function stringToDate(str) {
+    const [day, month, year] = str.split('/');
+    var tempDate = new Date(year, month - 1, day);
+    return tempDate;
+}
+
 function sortDates(arr, prop, asc) {
     arr = arr.sort(function(a, b) {
-        aDate = new Date(a[prop]).getTime()
-        bDate = new Date(b[prop]).getTime()
         if (asc) {
-            if (aDate > bDate) return 1;
-            if (aDate < bDate) return -1;
-            return 0;
+            if (a[prop] !== null) {
+                var aDate = stringToDate(a[prop]).getTime();
+            } else {
+                return 1;
+            }
+            if (b[prop] !== null) {
+                var bDate = stringToDate(b[prop]).getTime();
+            } else {
+                return -1;
+            }
+            return aDate < bDate ? -1 : 1;
         } else {
-            if (bDate > aDate) return 1;
-            if (bDate < aDate) return -1;
-            return 0;
+            if (b[prop] !== null) {
+                var bDate = stringToDate(b[prop]).getTime();
+            } else {
+                return 1;
+            }
+            if (a[prop] !== null) {
+                var aDate = stringToDate(a[prop]).getTime();
+            } else {
+                return -1;
+            }
+            return aDate < bDate ? 1 : -1;
         }
+        
+        // aDate = new Date(a[prop]).getTime()
+        // bDate = new Date(b[prop]).getTime()
+        // if (asc) {
+            // if (a[prop] === null) return 1;
+            // if (aDate > bDate) return 1;
+            // if (aDate < bDate) return -1;
+            // return 0;
+        // } else {
+            // if (b[prop] === null) return -1;
+            // if (bDate > aDate) return 1;
+            // if (bDate < aDate) return -1;
+            // return 0;
+        // }
     });
     return arr;
 }
