@@ -1,0 +1,17 @@
+<script id="site-menu" type="text/x-handlebars-template">
+    <div class="logo-wrapper"><a href="/"><img src="img/logo.png" /></a></div>
+        <div class="menuToggle">
+            <div class="menu-label">Menu</div>
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul class="navigation-menu-wrapper">
+                {{#each this}}
+                    <li class="navigation-menu-item">
+                        <a href="{{url}}" class="navigation-menu-link{{#if secondary}} navigation-menu-link-secondary{{/if}}">{{name}}</a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+</script>

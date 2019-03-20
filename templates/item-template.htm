@@ -1,0 +1,16 @@
+<script id="item-template" type="text/x-handlebars-template">
+    {{#each this}}
+        <div class="item-wrapper">
+            <a href="{{url}}" target="_blank">
+                <div class="image-highlight">
+                    <img src="img/{{toLowerCase tipo}}.png" />
+                </div>
+                <div class="item-content">
+                    <div class="item-deadline">{{{highlightDate dataLimite}}}</div>
+                    <div class="item-title">{{titulo}}</div>
+                    <div class="item-place">{{local}}</div>
+                </div>
+            </a>
+        </div>
+    {{/each}}
+</script>

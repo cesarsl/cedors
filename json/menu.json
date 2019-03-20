@@ -1,0 +1,12 @@
+[
+    { "name": "Concursos", "url": "/concursos.html", "secondary": false },
+    { "name": "Estudos", "url": "/estudos.html", "secondary": false },
+    { "name": "Cursos Livres", "url": "/cursos.html", "secondary": true },
+    { "name": "Ensino Básico", "url": "/cursos.html", "secondary": true },
+    { "name": "Ensino Técnico", "url": "/cursos.html", "secondary": true },
+    { "name": "Ensino Superior", "url": "/cursos.html", "secondary": true },
+    { "name": "Pós-Graduação", "url": "/cursos.html", "secondary": true },
+    { "name": "Idiomas", "url": "/cursos.html", "secondary": true },
+    { "name": "Dicas", "url": "/dicas.html", "secondary": false },
+    { "name": "Oportunidades", "url": "/oportunidades.html", "secondary": false }
+]
