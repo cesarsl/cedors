@@ -24,11 +24,18 @@
             
             // Load Content
             $.getJSON('https://api.sheety.co/9dc03903-6ddb-4116-9ccd-6978675aac5b', function(data) {
-                $.get('templates/item-template.htm', function(templates) { 
+                var sorted = sortDates(data, 'dataLimite', true);
+                var filteredDate = filterDate(sorted);
+                var filteredType = filterArray(filteredDate, 'tipo', 'Cursos Livres');
+                
+                if (filteredType.length > 0) {
+                    var templateName = 'templates/item-template.htm';
+                } else {
+                    var templateName = 'templates/empty-page.htm';
+                }
+
+                $.get(templateName, function(templates) { 
                     var template = Handlebars.compile($(templates).html());
-                    var sorted = sortDates(data, 'dataLimite', true);
-                    var filteredDate = filterDate(sorted);
-                    var filteredType = filterArray(filteredDate, 'tipo', 'Cursos Livres');
                     $('#content').html(template(filteredType));
                 });
             });
